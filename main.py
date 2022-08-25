@@ -27,8 +27,7 @@ while True:
         if name in contacts:
             print(f'{contacts.keys()} his/her number {contacts.values()}')
         else:
-            # print(f'sorry theres no contact with this {name} name')
-            print('sad')
+            print(f'sorry theres no contact with this {name} name')
     elif item == '4':
         print('update')
     elif item == '5':

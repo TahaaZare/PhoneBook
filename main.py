@@ -22,12 +22,13 @@ while True:
 
         # endregion
     elif item == '3':
-        # print('search')
+        # region Search Contact
         name = input('please enter name for search : ')
         if name in contacts:
-            print(f'{contacts.keys()} his/her number {contacts.values()}')
+            print(f'{list(contacts.keys())}  his/her number is {list(contacts.values())}')
         else:
-            print(f'sorry theres no contact with this {name} name')
+            print(f'sorry theres no contact with this "{name}" name')
+        # endregion
     elif item == '4':
         print('update')
     elif item == '5':

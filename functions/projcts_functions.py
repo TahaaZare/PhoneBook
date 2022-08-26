@@ -1,3 +1,6 @@
+import time
+
+
 # region menu
 
 def show_menu():
@@ -20,9 +23,21 @@ def add_contact(contacts):
     name = input('New Contact Name : ')
     mobile = input('New Contact Phone Number : ')
 
-    contacts[name] = mobile
-
-
+    if mobile.isalpha():
+        while mobile.isalpha():
+            print(20 * '!')
+            print('please just enter a valid number !!!')
+            print(20 * '!')
+            mobile = input('New Contact Phone Number : ')
+            if mobile.isalnum() and len(mobile) < 11 or len(mobile) > 11:
+                while len(mobile) < 11 or len(mobile) > 11:
+                    print(20 * '!')
+                    print('please just enter a valid number  !!!')
+                    print(20 * '!')
+                    mobile = input('New Contact Phone Number : ')
+                    if mobile.isalnum() and len(mobile) == 11:
+                        contacts[name] = mobile
+                        print('Please Wait . . .')
+                        time.sleep(2)
+                        print('Success to add your contact :) ')
 # endregion
-
-

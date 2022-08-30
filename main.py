@@ -28,6 +28,9 @@ while True:
         # region Search Contact
         name = input('please enter name for search : ')
         search_name(contacts, name)
+        # result = search_name(contacts, name)
+        # if not result:
+        #     print('no contact')
         # endregion
     elif item == '4':
         # region Update Contact
@@ -36,6 +39,7 @@ while True:
             # region Change Contact Name
             contact_name = input('Please enter a contact name for update : ')
             update_contact_name(contacts, contact_name)
+
             print(28 * '/')
             # endregion
         elif update_item == '2':

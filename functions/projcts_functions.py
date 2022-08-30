@@ -71,11 +71,27 @@ def add_contact(contacts):
 # region Search
 
 def search_name(contacts, name):
-    if name.lower() in contacts.keys() or name.upper() in contacts.keys():
-        print(f'"{name.lower()}"  his/her number is "{contacts.get(name)}"')
+    # if name.lower() in contacts.keys():
+    #     print(f'"{name.lower()}"  his/her number is "{contacts.get(name.lower())}"')
+    # elif name.upper() in contacts.keys():
+    #     print(f'"{name.upper()}"  his/her number is "{contacts.get(name.upper())}"')
+    # else:
+    #     time.sleep(1)
+    #     print(f'sorry theres no contact with this "{name}" name')
+    # flag = False
+    # for contact in contacts:
+    #     if contact == name:
+    #         print(f'{contact}')
+    #         flag = True
+    #         break
+    # return flag
+
+    for contact in contacts:
+        if contact == name:
+            print(f'{contact}')
+            break
     else:
-        time.sleep(1)
-        print(f'sorry theres no contact with this "{name}" name')
+        print('no contact')
 
 
 # endregion
@@ -84,10 +100,10 @@ def search_name(contacts, name):
 
 def update_contact_name(contacts, name):
     if name in contacts:
-        phoneNumber = contacts.get(name)
+        phone_number = contacts.get(name)
         del contacts[name]
         change_name = input('Please Enter a new name for your contact : ')
-        contacts[change_name] = phoneNumber
+        contacts[change_name] = phone_number
         print(f'Success to change Contact name !')
     else:
         time.sleep(1)
@@ -106,12 +122,66 @@ def update_contact_number(contacts, contact_name_number):
 
 # region Delete
 
+def delete_with_flag(contacts, name):
+    flag = False
+    for contact in contacts:
+        if contact == name:
+            delete_contact = input(f'Are u Sure to delete this "{name}" contact y/n ?')
+            if delete_contact.lower() == 'y' or delete_contact.upper() == 'Y':
+                del contacts[name]
+                print(f'deleting "{name}" Contact ! Please Wait . . .')
+                time.sleep(2)
+                print('The deletion was successful !')
+                flag = True
+                break
+            elif delete_contact.lower() == 'n' or delete_contact.upper() == 'N':
+                print('Ok i Keep this contact for Y !')
+                time.sleep(1)
+                break
+                show_menu()
+            else:
+                print('Invalid Input !')
+                print('Please tyr Later !')
+                time.sleep(2)
+                break
+                show_menu()
+        else:
+            print('no contact found !')
+            time.sleep(1)
+            break
+
+
+def delete_contact_names(contacts, name):
+    for contact in contacts:
+        if contact == name:
+            delete_contact = input(f'Are u Sure to delete this "{name}" contact y/n ?')
+            if delete_contact.lower() == 'y' or delete_contact.upper() == 'Y':
+                del contacts[name]
+                print(f'deleting "{name}" Contact ! Please Wait . . .')
+                time.sleep(2)
+                print('The deletion was successful !')
+                break
+            elif delete_contact.lower() == 'n' or delete_contact.upper() == 'N':
+                print('Ok i Keep this contact for Y !')
+                time.sleep(1)
+                break
+                show_menu()
+            else:
+                print('Invalid Input !')
+                print('Please tyr Later !')
+                time.sleep(2)
+                break
+                show_menu()
+    else:
+        print('no contact')
+
+
 def delete(contacts, delete_contact_name):
     if delete_contact_name in contacts:
-        delete_contact = input(f'Are u Sure to delete this {delete_contact_name} contact y/n ?')
+        delete_contact = input(f'Are u Sure to delete this "{delete_contact_name}" contact y/n ?')
         if delete_contact.lower() == 'y' or delete_contact.upper() == 'Y':
             del contacts[delete_contact_name]
-            print(f'deleting {delete_contact_name} Contact ! Please Wait . . .')
+            print(f'deleting "{delete_contact_name}" Contact ! Please Wait . . .')
             time.sleep(2)
             print('The deletion was successful !')
         elif delete_contact.lower() == 'n' or delete_contact.upper() == 'N':
@@ -124,6 +194,6 @@ def delete(contacts, delete_contact_name):
             time.sleep(2)
             show_menu()
     else:
-        print(f'Theres no contact with this {delete_contact_name} name !')
+        print(f'Theres no contact with this "{delete_contact_name}" name !')
 
 # endregion

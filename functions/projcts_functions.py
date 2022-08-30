@@ -1,7 +1,7 @@
 import time
 
 
-# region Fake Data
+# region seed Data
 
 def fake_data(contacts):
     contacts['ali'] = '093333333333'
